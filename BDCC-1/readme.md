@@ -1,6 +1,6 @@
-# Assignment 1
+## Assignment 1
 
-This project implements a cloud-based picture and associated information storage and retrieval system on Azure, accessible through a web interface. Users can upload a CSV file containing metadata about people and associated pictures. The system allows for searching, filtering, and manipulation of the stored data.
+This assignment implements a cloud-based picture and associated information storage and retrieval system on Azure, accessible through a web interface. Users can upload a CSV file containing metadata about people and associated pictures. The system allows for searching, filtering, and manipulation of the stored data.
 
 ### Features
 - Upload CSV files with people metadata and pictures.
