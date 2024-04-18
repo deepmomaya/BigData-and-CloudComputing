@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment-1</title>
+</head>
+<body>
+    {% include 'index.html'%}
+    <form action="/runq2" method="post">
+        Please enter salary:
+        <input type="number" name="sal" id="">
+        <button type="submit">OK</button>
+    </form>
+    {% if data %}
+    {% for x in data: %}
+        <img src="/static/{{x}}" alt="" srcset="" width="200" breadth="200">
+        {% endfor %}
+    {% else %}
+    {% endif %}
+    <br>
+    <br>
+</body>
+</html>

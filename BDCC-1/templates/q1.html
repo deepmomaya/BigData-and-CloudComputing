@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment-1</title>
+</head>
+<body>
+    {% include 'index.html'%}
+    <form action="/runq1" method="post">
+        Please enter name:
+        <input type="text" name="name" id="">
+        <button type="submit">OK</button>
+    </form>
+    {% if data %}
+    <img src= "/static/{{img}}" alt="No Image For the Name" width="200" height="200">
+    {% elif error %}
+    <br><p>{{ error }}</p>
+    {% endif %}
+</body>
+</html>

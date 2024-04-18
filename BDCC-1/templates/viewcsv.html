@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment-1</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th,td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        img {
+            max-width: 100px;
+            max-height: 100px;
+        }
+    </style>
+</head>
+<body>
+    {% include 'index.html' %}
+    {% if data %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>State</th>
+                    <th>Salary</th>
+                    <th>Grades</th>
+                    <th>Room</th>
+                    <th>Telnum</th>
+                    <th>Picture</th>
+                    <th>Keywords</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for x in data %}
+                    <tr>
+                        {% for y, j in x.items() %}
+                            {% if y == 'Picture' %}
+                                <td><img src="/static/{{ j }}" alt="Picture"></td>
+                            {% else %}
+                                <td>{{ j }}</td>
+                            {% endif %}
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+    {% if msg %}
+        <p>{{ msg }}</p>
+    {% else %}
+        <p>{{ error }}</p>
+    {% endif %}
+    <br>
+    <br>
+</body>
+</html>
+</html>

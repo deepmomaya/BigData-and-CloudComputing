@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment-1</title>
+</head>
+<body>
+    {% include 'index.html'%}
+    <form action="/runq3" method="post">
+        Please enter name of record to modify:
+        <input type="text" name="name" id="">
+        <button type="submit">OK</button>
+    </form>
+    {% if output %}
+    <h2>Edit the details : {{output["Name"]}}</h2>
+    <form action="/updatedetails" method="post">
+        Name: <input type="text" name="name" id="" value="{{output['Name']}}"><br><br>
+        State: <input type="text" name="state" id=""  value="{{output['State']}}"><br><br>
+        Salary: <input type="text" name="salary" id=""  value="{{output['Salary']}}"><br><br>
+        Grade: <input type="text" name="grade" id=""  value="{{output['Grade']}}"><br><br>
+        Room: <input type="text" name="room" id=""  value="{{output['Room']}}"><br><br>
+        Telnum: <input type="text" name="telnum" id=""  value="{{output['Telnum']}}"><br><br>
+        Picture: <input type="file" name="picture" id="" value="{{output['Picture']}}"> <br><img src="static/{{output['Picture']}}" width=200 breadth =200 alt="No image Present" srcset=""><br><br>
+        Keyword: <input type="text" name="keyword" id="" value="{{output['Keywords']}}"><br><br>
+        <button type="submit">OK</button>
+    </form>
+    {% endif %}
+    {% if error %}
+    {{error}}
+    {% endif %}
+</body>
+</html>
