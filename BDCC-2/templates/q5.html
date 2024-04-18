@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment-2</title>
+</head>
+<body>
+    {% include 'index.html'%}
+    {% if msg %}
+    <p>Number of rows : {{count}}</p>
+<table class="table table-striped table-sm">
+    <thead class="thead-dark">
+        <th>Time</th>
+        <th>Latitude</th>
+        <th>Longitude</th>
+        <th>Depth</th>
+        <th>Mag</th>
+        <th>Magtype</th>
+        <th>NST</th>
+        <th>Gap</th>
+        <th>Dmin</th>
+        <th>RMS</th>
+        <th>Net</th>
+        <th>Id</th>
+        <th>Updated</th>
+        <th>Place</th>
+        <th>Type</th>
+        <th>Horizontal</th>
+        <th>Deptherro</th>
+        <th>Magerror</th>
+        <th>Magnst</th>
+        <th>Status</th>
+        <th>Location</th>
+        <th>Magsource</th>
+    </thead>
+    {% for x in data %}
+    <tr>
+        {% for y in x %}
+        <td><p>{{y}}</p></td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+    {% elif error %}
+    {{ error }}
+    {% endif %}
+</table>
+</body>
+</html>

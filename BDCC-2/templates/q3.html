@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment-2</title>
+</head>
+<body>
+    {% include 'index.html'%}
+    <form action="/runq3" method="post">
+        Latitude: <input type="text" name="lat" id="" required><br>
+        Longitude:<input type="text" name="long" id="" required><br>
+        Distance: <input type="text" name="dist" id="" required><br>
+        <button type="submit">OK</button>
+    </form>
+    {% if msg %}
+    <p>Number of rows : {{count}}</p>
+    <table class="table table-striped table-sm">
+        <thead class="thead-dark">
+            <th>Time</th>
+            <th>Latitude</th>
+            <th>Longitude</th>
+            <th>Mag</th>
+            <th>Place</th>
+        </thead>
+        {% for x in data %}
+        <tr>
+            {% for y in x %}
+            <td><p>{{y}}</p></td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+        {% elif error %}
+        {{ error }}
+    </table>
+        {% endif %}
+</body>
+</html>
