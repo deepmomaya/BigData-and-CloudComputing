@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment-3</title>
+</head>
+<body>
+{% include 'index.html'%}
+<br><br>
+{% if error %}
+<b>
+    <p>{{error}}</p>
+</b>
+{% endif %}
+<div class="form">
+    <form action="/q1redis" method="post">
+        <label for="noq">ENTER THE NUMBER OF QUERIES TO BE PERFORMED <input type="text" name="noq" value="{{nq}}"
+                size="50"></label>
+        <input type="submit" value="OK">
+    </form>
+</div>
+<br>
+{% if sec %}
+<h3>{{ sec }} seconds of time taken to execute {{ nq }} queries with caching</h3>
+{% endif %}
+</body>
+</html>
