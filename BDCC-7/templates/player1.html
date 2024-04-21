@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment-7</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
+    <script type="text/javascript" charset="utf-8">
+    function displayscore(message){
+        $("#scorebox").text(message);
+    } 
+    function displayname(name){
+        $("#pname").text("Player name: "+ name)
+    } 
+    function displaymessage(message){
+        $("#msgbox").append('<p>'+message+'</p>')
+    }
+    $(document).ready(function(){
+        var socket = io();
+        $('#createplayer').show();
+        $('#playerplay').hide();
+        $(".pilebtn").click(function(){
+            var socket = io();
+            p1 = $(".p1").val();
+            pnum = $("#pnum").val()
+            pstone = $("#pstone").val()
+            socket.on('connect', function() {
+                // console.log(p1) 
+                socket.emit('score',data={'pnum':pnum,'pstone':pstone,'pname':p1})
+            }); 
+        });
+        socket.on('score1', function(data) {
+                displayscore(data)
+                console.log(data)
+        });
+        $(".btn").click(function(){
+            var socket = io();
+            $('#createplayer').hide();
+            $('#playerplay').show();
+            p1 = $(".p1").val();
+            console.log(p1)
+            socket.on('connect', function() {
+                socket.emit('join',data= {'username': p1,'room':'game1'});
+                displayname(p1)
+            });
+            socket.on('message', function(data) {
+                displaymessage(data)
+                console.log(data)
+        });
+        });
+         
+    });
+</script>
+</head>
+<body>
+    {% include 'index.html' %}
+    <div id="pname">
+    </div>
+    <div id="scorebox">
+    </div>
+    <div id="createplayer">
+        Enter Name for Player1: <input type="text" class="p1" id="" required><br>
+        <button type="submit" class="btn">Create Player</button>
+    </div>   
+    <div id="playerplay">
+            Enter Pile number: <input type="text" id="pnum" required>
+            Enter stones to reduce: <input type="text" id="pstone" required>
+            <button type="submit" class="pilebtn">Take Turn</button>
+    </div>    
+    <div id="msgbox">
+    </div>
+    {% if error %}
+    {{error}}
+    {% endif %}
+</body>
+</html>

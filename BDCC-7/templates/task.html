@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment-7</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
+    <script type="text/javascript" charset="utf-8">
+    function displayscore(message){
+        $("#scorebox").text(message);
+    }  
+    $(document).ready(function(){  
+        $('#createplayer').show();
+        $('#playerplay').hide();
+        $(".btn").click(function(){
+        var socket = io();
+        pile1 = $('#pile1').val()
+        pile2 = $('#pile2').val()
+        pile3 = $('#pile3').val()
+        maxs = $('#maxs').val()
+        mins = $('#mins').val()
+        socket.on('connect', function() {
+        socket.emit('setvar',data= {'pile1':pile1,'pile2':pile2,'pile3':pile3,'maxs':maxs,'mins':mins,'room':'game1'});
+        socket.on('score1', function(data) {
+        displayscore(data)
+        console.log(data)
+    });
+    });
+    socket.on('message', function(data) {
+    $('#msgbox').append('<p>'+data+'</p>');
+    });
+    });
+    });
+</script>
+</head>
+<body>
+    {% include 'index.html' %}
+        Enter Stones for pile 1: <input type="text" name="pile1" id="pile1"><br>
+        Enter Stones for pile 2: <input type="text" name="pile2" id="pile2"><br>
+        Enter Stones for pile 3: <input type="text" name="pile3" id="pile3"><br>
+        Min Pick Stones: <input type="text" name="mins" id="mins"><br>
+        Max Pick Stones: <input type="text" name="maxs" id="maxs"><br>
+        <button type="submit" class="btn" >Set Variables</button>
+    <div id="msgbox">
+    </div>
+</body>
+</html>

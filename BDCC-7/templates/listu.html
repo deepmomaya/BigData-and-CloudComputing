@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment-7</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function(){
+            $("#btn").click(function(){
+                r = $("#g").val()
+                var socket = io();
+                socket.on('connect', function() {
+                    socket.emit('listu')
+                });
+                socket.on('messsage', function(data) {
+                    console.log(data)
+                });
+                });
+        });
+        
+    </script>
+</head>
+<body>
+    {% include 'index.html' %}
+    <!-- <form onsubmit="listu()" method="POST" > -->
+    Enter Room name: <input type="text" name="g" id="g"><br>
+    <button type="submit" id="btn">Submit</button>
+    <!-- </form> -->
+</body>
+</html>
