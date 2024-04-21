@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment-4</title>
+    <style>
+    #graph{
+        width: 900px;
+        height: 500px;
+        margin: 20px auto;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        border-radius: 8px;
+    }
+    </style>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current',{'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Magnitude','Depth'],
+                {% for x in ccbd %}
+                [{{ x[0] }},{{ x[1] }}],
+                {% endfor %}
+            ]);
+            var options = {
+                title: 'Magnitudes vs Depths: Scatter Chart',
+                hAxis: { title: 'Magnitudes', minValue: {{mag1}}, maxValue: {{mag2}}+1 },
+                vAxis: { title: 'Depths', minValue: {{dep1}}-1, maxValue: {{dep2}}+1 },
+                legend: 'none'
+            };
+            var chart = new google.visualization.ScatterChart(document.getElementById('graph'));
+            chart.draw(data, options);
+        }
+    </script>
+</head>
+<body>
+    {% include 'index.html' %}
+    <form action="/runq3" method="post">
+        <label for="mag1">Enter magnitude range from:
+        <input type="text" name="mag1" id="mag1" required></label><br><br>
+        <label for="mag2">Enter magnitude range to:
+        <input type="text" name="mag2" id="mag2" required></label><br><br>
+        <label for="dep1">Enter depth range from:
+        <input type="text" name="dep1" id="dep1" required></label><br><br>
+        <label for="dep2">Enter depth range to:
+        <input type="text" name="dep2" id="dep2" required></label><br><br>
+        <button type="submit">OK</button>
+    </form>
+    {% if msg %}
+    <div id="graph"></div>
+    {% elif error %}
+    {{ error }}
+    {% endif %}
+</body>
+</html>

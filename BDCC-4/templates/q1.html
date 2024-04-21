@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment-4</title>
+    <style>
+    #barchart_values{
+        width: 900px;
+        height: 500px;
+        margin: 20px auto;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        border-radius: 8px;
+    }
+    </style>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load("current",{packages: ["corechart"]});
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart(){
+            var data = new google.visualization.arrayToDataTable([
+                ['Magnitudes','Occurrences',{role: "style"}],
+                ['Magnitude 0.0 to 1.0',{{a1}},'color: gray'],
+                ['Magnitude 1.0 to 2.0',{{a2}},'color: gray'],
+                ['Magnitude 2.0 to 3.0',{{a3}},'color: gray'],
+                ['Magnitude 3.0 to 4.0',{{a4}},'color: gray'],
+                ['Magnitude 4.0 to 5.0',{{a5}},'color: gray']
+            ]);
+            var view = new google.visualization.DataView(data);
+            view.setColumns([0, 1, {
+                calc: "stringify",
+                sourceColumn: 1,
+                type: "string",
+                role: "annotation"
+            }, 2]);
+            var options = {
+                title: "Magnitudes: Bar Chart",
+                width: 900,
+                height: 500,
+                bar: {groupWidth: "90%"},
+                legend: {position: "none"}
+            };
+            var chart = new google.visualization.BarChart(document.getElementById("barchart_values"));
+            chart.draw(view, options);
+        }
+    </script>
+</head>
+<body>
+    {% include 'index.html' %}
+    {% if msg %}
+    <div id="barchart_values"></div>
+    {% elif error %}
+    {{error}}
+    {% endif %}
+</body>
+</html>
