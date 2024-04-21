@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment-8</title>
+</head>
+<body>
+    {%include 'index.html'%}
+    <h1>Welcome Shopper 2</h1>
+    {% if purchase_success %}
+        <p>{{ purchase_success }}</p>
+    {% endif %}
+    <form action="/shopper2" method="post">
+        <label for="selected_item">Select Item:</label>
+        <select name="selected_item" id="selected_item">
+            {% for item in inventory %}
+            <option value="{{ item }}">{{ item }}</option>
+            {% endfor %}
+        </select><br><br>
+        <input type="submit" value="Purchase">
+    </form>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment-8</title>
+</head>
+<body>
+    {%include 'index.html'%}
+    <h1>Welcome Admin to your Grocery Store</h1>
+    <h2>Inventory</h2>
+    <ul>
+        {% for item in inventory %}
+        <li>{{ item }}</li>
+        {% endfor %}
+    </ul>
+    <h2>Recent Purchases</h2>
+    <ul>
+        {% for item, shopper in purchases.items() %}
+        <li>{{ item }} - Purchased by {{ shopper }}</li>
+        {% endfor %}
+    </ul>
+    <h2>Add Item</h2>
+    <form action="/gs" method="post">
+        <label for="item_name">Item Name:</label>
+        <input type="text" name="item_name" id="item_name">
+        <input type="submit" name="add_item" value="Add">
+    </form>
+    <h2>Remove Item</h2>
+    <form action="/gs" method="post">
+        <select name="remove_item">
+            {% for item in inventory %}
+            <option value="{{ item }}">{{ item }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" name="remove_item" value="Remove">
+    </form>
+</body>
+</html>
