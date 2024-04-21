@@ -1,6 +1,6 @@
 ## Assignment 7
 
-This assignment involves making a simple game of piles of stones on Azure. The game is designed to be played remotely, with players and the administrator accessing the game through a web interface.
+This assignment is of making a simple game of piles of stones on Azure. The game is designed to be played remotely, with players and the administrator accessing the game through a web interface.
 
 ### Features
 - The administrator determines the initial number of stones in each pile and tracks the total score across multiple plays.
