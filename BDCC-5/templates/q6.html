@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment-5</title>
+</head>
+<body>
+    {% include 'index.html' %}
+    <form action="/q6" method="post">
+    </form>
+    {% if msg %}
+    {% for x in data %}
+    {{x}} 
+    {% endfor %}
+    {% endif %}
+    {% if error %}
+    {{ error }}
+    {% endif %}
+</body>
+</html>

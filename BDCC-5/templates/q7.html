@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment-5</title>
+</head>
+<body>
+    {% include 'index.html' %}
+    <form action="/runq7" method="post">
+        Enter word: <input type="text" name="word" id=""><br>
+        Enter number of lines: <input type="text" name="line" id="">
+        <button type="submit">Find</button>
+    </form>
+    {% if msg %}
+    {% for x in data %}
+    {{x}}<br>
+    {% endfor %}
+    {% endif %}
+    {% if error %}
+    {{ error }}
+    {% endif %}
+</body>
+</html>

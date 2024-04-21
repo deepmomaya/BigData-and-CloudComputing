@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment-5</title>
+</head>
+<body>
+    {% include 'index.html' %}
+    <form action="/runq4" method="POST">
+        Enter Words: <input type="text" name="c" id=""><br>
+        <button type="submit">Find</button>
+    </form>
+    {% if msg %}
+    <table>
+        {% for x,y in data %}
+        <tr>
+            <td>{{x}} {{y}}</td>
+            <td>{{data[x,y]}} times occuring</td>
+        </tr>        
+        {% endfor %}
+    </table>
+    {% endif %}
+    {% if error %}
+    {{ error }}
+    {% endif %}
+</body>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment-5</title>
+</head>
+<body>
+    {% include 'index.html' %}
+    <form action="/runq1" method="post">
+        <input type="text" name="key" id="" autocomplete="off">
+        <button type="submit">Search By keyword</button>
+    </form>
+    {% if msg %}
+    Word Count : {{count}}
+    {% endif %}
+    {% if error %}
+    {{ error }}
+    {% endif %}
+</body>
+</html>

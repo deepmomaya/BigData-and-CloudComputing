@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment-5</title>
+</head>
+<body>
+    {% include 'index.html' %}
+    <form action="/runq8" method="POST">
+        Enter Text here: <input type="text" name="content" id=""><br>
+        Enter Filename here: <input type="text" name="fname" id=""><br>
+        <button type="submit">Create</button>
+    </form>
+    {% if msg %}
+        <p>{{ msg }}</p>
+    {% endif %}
+    {% if error %}
+        <p>Error: {{ error }}</p>
+    {% endif %}
+</body>
+</html>

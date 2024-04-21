@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment-5</title>
+</head>
+<body>
+    {% include 'index.html' %}
+    <form action="/runq2" method="post">
+        Enter value of N: <input type="text" name="c" id=""  autocomplete="off"><br>
+        <button type="submit">Find</button>
+    </form>
+    {% if msg %}
+    <table>
+        <tr>
+            <th>Word</th>
+            <th>Count</th>
+        </tr>
+        {% for x in data %}
+        <tr>
+            <td>{{x[0]}}</td>
+            <td>{{x[1]}} out of {{count}} </td>
+        </tr>        
+        {% endfor %}
+    </table>
+    {% endif %}
+    {% if error %}
+    {{ error }}
+    {% endif %}
+</body>
+</html>
