@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Assignment-6</title>
+</head>
+<body>
+    {% include 'index.html' %}
+    <form action="/admin" method="POST">
+        <label for="length">Minimum Password Length:</label>
+        <input type="number" id="length" name="length" min="1" max="20" required>
+        <br>
+        <label for="additional_chars">Additional Valid Characters (IV):</label>
+        <input type="text" id="additional_chars" name="additional_chars">
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
+

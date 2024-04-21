@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Assignment-6</title>
+</head>
+<body>
+    {% include 'index.html' %}
+    <form action="/runq2" method="POST">
+        <label for="text">Enter Text:</label>
+        <textarea id="text" name="text" rows="5" cols="50"></textarea>
+        <br>
+        <label for="m">Minimum Words per Sentence:</label>
+        <input type="number" id="m" name="m" min="1" required>
+        <br>
+        <label for="x">Maximum Words per Sentence:</label>
+        <input type="number" id="x" name="x" min="1" required>
+        <br>
+        <label for="p">Maximum Words per Sentence Part:</label>
+        <input type="number" id="p" name="p" min="1" required>
+        <br>
+        <label for="l">Maximum Word Length:</label>
+        <input type="number" id="l" name="l" min="1" required>
+        <br>
+        <input type="submit" value="Validate">
+    </form>
+</body>
+</html>

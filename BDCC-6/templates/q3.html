@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Assignment-6</title>
+</head>
+<body>
+    {% include 'index.html' %}
+    <form action="/runq3" method="POST">
+        <label for="text">Enter Text:</label>
+        <textarea id="text" name="text" rows="5" cols="50"></textarea>
+        <br>
+        <label for="banned_words">Banned Words (up to 6):</label>
+        <input type="text" id="banned_words" name="banned_words" maxlength="6">
+        <br>
+        <label for="banned_phrases">Banned Phrases (up to 6):</label>
+        <input type="text" id="banned_phrases" name="banned_phrases" maxlength="6">
+        <br>
+        <label for="max_banned">Max Banned Limit:</label>
+        <input type="number" id="max_banned" name="max_banned" min="0" max="12">
+        <br>
+        <input type="submit" value="Censor">
+    </form>
+</body>
+</html>

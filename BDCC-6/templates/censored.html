@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Assignment-6</title>
+</head>
+<body>
+    {% include 'index.html' %}
+    {% if alert_message %}
+        <p>{{ alert_message }}</p>
+    {% endif %}
+    <p>{{ cleaned_text }}</p>
+</body>
+</html>
